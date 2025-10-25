@@ -3,14 +3,17 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int32, String
 import serial
+import time
 
 
 class ServoController(Node):
     def __init__(self):
         super().__init__('servo_controller')
 
-        # Serial-Verbindung (Port anpassen!)
-        self.ser = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
+        # Serial-Verbindung mit kürzerem timeout
+        self.ser = serial.Serial('/dev/ttyACM0', 115200, timeout=0.1)
+        time.sleep(2)  # Warte bis Arduino bereit ist
+        self.ser.reset_input_buffer()  # Buffer leeren
 
         # Subscriber für Servo-Befehle
         self.subscription = self.create_subscription(
@@ -22,21 +25,30 @@ class ServoController(Node):
         # Publisher für Feedback
         self.publisher = self.create_publisher(String, 'servo_feedback', 10)
 
-        # Timer zum Lesen von Arduino-Nachrichten
-        self.timer = self.create_timer(0.1, self.read_serial)
+        # Schnellerer Timer (20ms statt 100ms)
+        self.timer = self.create_timer(0.02, self.read_serial)
+
+        self.get_logger().info('Servo Controller bereit')
 
     def angle_callback(self, msg):
+        t1 = time.time()
         angle = msg.data
         self.ser.write(f"{angle}\n".encode())
-        self.get_logger().info(f'Sende Winkel: {angle}°')
+        self.ser.flush()  # Sende sofort
+        t2 = time.time()
+        self.get_logger().info(f'Sende Winkel: {angle}° (Latenz: {(t2 - t1) * 1000:.1f}ms)')
 
     def read_serial(self):
-        if self.ser.in_waiting > 0:
-            feedback = self.ser.readline().decode().strip()
-            msg = String()
-            msg.data = feedback
-            self.publisher.publish(msg)
-            self.get_logger().info(f'Arduino: {feedback}')
+        while self.ser.in_waiting > 0:  # Alle verfügbaren Nachrichten lesen
+            try:
+                feedback = self.ser.readline().decode().strip()
+                if feedback:
+                    msg = String()
+                    msg.data = feedback
+                    self.publisher.publish(msg)
+                    self.get_logger().info(f'Arduino: {feedback}')
+            except:
+                pass
 
 
 def main(args=None):
