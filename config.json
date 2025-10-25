@@ -1,0 +1,15 @@
+{
+  "arduino": {
+    "port": "COM3",
+    "baudrate": 115200
+  },
+  "lidar": {
+    "port": "COM4"
+  },
+  "scan": {
+    "angle_start": 45,
+    "angle_end": 135,
+    "angle_step": 5,
+    "duration_per_position": 2.0
+  }
+}

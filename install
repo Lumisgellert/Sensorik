@@ -1,0 +1,5 @@
+pip install pyserial
+pip install rplidar-roboticia
+pip install numpy
+pip install pyyaml
+pip install open3d
