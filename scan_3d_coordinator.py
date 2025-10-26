@@ -7,7 +7,7 @@ import numpy as np
 import time
 import json
 from datetime import datetime
-from arduino_controller import ArduinoServoController
+from arduino_controller_JSON_NO_STARTUP import ArduinoServoController
 from lidar_scanner import LidarScanner
 
 
