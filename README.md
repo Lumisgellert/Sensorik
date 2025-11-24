@@ -69,11 +69,11 @@ sudo nano neue_Node.py
 ### Schritt 4: Setup Datei bearbeiten - Entry Points
 Setup.py Datei öffnen
 ```bash
-cd ros2_ws/src/Name_vom_Ordner/setup.py
+sudo nano ros2_ws/src/Name_vom_Ordner/setup.py
 ```
 folgende Zeile in Setup hinzufügen
 ```bash
-neue_Node = Name_vom_Ordner.neue_Node:main 
+'neue_Node = Name_vom_Ordner.neue_Node:main',
 ```
 
 ### Schritt 5: Abhängigkeiten prüfen XML, sind die vorhandenen drin?
