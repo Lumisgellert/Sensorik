@@ -25,6 +25,11 @@ ros2 launch robot_tf_publisher tf_publisher_launch.py
 ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false
 ```
 
+### Fahrzeug über Tastatur steuern
+```bash
+ros2 run IArduino arduino_keyboard_control.py
+```
+
 ### rviz2 starten
 ```bash
 rviz2
