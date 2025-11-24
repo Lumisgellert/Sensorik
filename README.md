@@ -61,6 +61,10 @@ Dort kann die selbst erstellete Python Node eingefügt werden
 ```bash
 touch ~/ros2_ws/src/Name_vom_Ordner/Name_vom_Ordner/neue_Node.py
 ```
+```bash
+cd ros2_ws/src/Name_vom_Ordner/Name_vom_Ordner
+sudo nano neue_Node.py
+```
 
 ### Schritt 4: Setup Datei bearbeiten - Entry Points
 Setup.py Datei öffnen
