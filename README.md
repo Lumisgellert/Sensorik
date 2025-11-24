@@ -35,6 +35,11 @@ ros2 run IArduino arduino_keyboard_control.py
 rviz2
 ```
 
+### rviz2 mit Nav2 default setup starten
+```bash
+ros2 run rviz2 rviz2 -d /opt/ros/kilted/share/nav2_bringup/rviz/nav2_default_view.rviz
+```
+
 ### Foxglove starten
 ```bash
 ros2 launch foxglove_bridge foxglove_bridge_launch.xml 
