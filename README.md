@@ -81,11 +81,6 @@ folgende Zeile in Setup hinzufügen
 'neue_Node = Name_vom_Ordner.neue_Node:main',
 ```
 
-### Schritt 5: Abhängigkeiten prüfen XML, sind die vorhandenen drin?
-```bash
-cd ~/ros2_ws/src 
-```
-
 ### Schritt 6: Build Source
 ```bash
 cd ~/ros2_ws
