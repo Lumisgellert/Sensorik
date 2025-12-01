@@ -49,6 +49,11 @@ ros2 launch foxglove_bridge foxglove_bridge_launch.xml
 ```bash
 ros2 launch nav2_bringup navigation_launch.py
 ```
+### Coordinate Frames tf
+```bash
+ros2 run tf2_tools view_frames
+```
+
 
 ## Neue Packages anlegen
 ### Schritt 1:
