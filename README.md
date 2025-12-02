@@ -49,6 +49,12 @@ ros2 launch foxglove_bridge foxglove_bridge_launch.xml
 ```bash
 ros2 launch nav2_bringup navigation_launch.py
 ```
+
+### Teleop keyboard steuerung starten
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard   --ros-args -p stamped:=true -r cmd_vel:=/cmd_vel
+```
+
 ### Coordinate Frames tf
 ```bash
 ros2 run tf2_tools view_frames
