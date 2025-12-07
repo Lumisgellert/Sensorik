@@ -59,7 +59,18 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard   --ros-args -p stamped:=tr
 ```bash
 ros2 run tf2_tools view_frames
 ```
+## bestehende Map laden
+Wenn man eine Gespeicherte Map laden möchte benötigt man eine .yaml und .pgm Datei. Diese müssen im gleicher Ordner liegen.
 
+### 1. Map_server starten
+```bash
+ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=/home/rasp/Desktop/Aufzug.yaml
+```
+### 2. Lifecycle Starten
+```bash
+ros2 lifecycle set /map_server configure
+ros2 lifecycle set /map_server activate
+```
 
 ## Neue Packages anlegen
 ### Schritt 1:
