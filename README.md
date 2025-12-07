@@ -30,14 +30,9 @@ ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false
 ros2 run IArduino arduino_keyboard_control.py
 ```
 
-### rviz2 starten
+### cmdToAck
 ```bash
-rviz2
-```
-
-### rviz2 mit Nav2 default setup starten
-```bash
-ros2 run rviz2 rviz2 -d /opt/ros/kilted/share/nav2_bringup/rviz/nav2_default_view.rviz
+ros2 run cmdVelToAckermannVel cmdToAck
 ```
 
 ### Foxglove starten
@@ -45,9 +40,24 @@ ros2 run rviz2 rviz2 -d /opt/ros/kilted/share/nav2_bringup/rviz/nav2_default_vie
 ros2 launch foxglove_bridge foxglove_bridge_launch.xml 
 ```
 
-### Nav2 starten mit bringup
+## Nav2
+### Nav2 starten mit bringup ohne bestehender Map
 ```bash
 ros2 launch nav2_bringup navigation_launch.py
+```
+
+### Nav2 starten Localisation mit map
+```bash
+ros2 launch nav2_bringup localization_launch.py \
+  map:=/home/rasp/Desktop/Aufzug.yaml \
+  use_sim_time:=false
+```
+
+### Nav2 starten mit bringup mit bestehender Map
+```bash
+ros2 launch nav2_bringup navigation_launch.py \
+  slam:=false \
+  map:=/pfad/zur/map.yaml
 ```
 
 ### Teleop keyboard steuerung starten
@@ -59,6 +69,12 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard   --ros-args -p stamped:=tr
 ```bash
 ros2 run tf2_tools view_frames
 ```
+
+### rviz2 mit Nav2 default setup starten
+```bash
+ros2 run rviz2 rviz2 -d /opt/ros/kilted/share/nav2_bringup/rviz/nav2_default_view.rviz
+```
+
 ## bestehende Map laden
 Wenn man eine Gespeicherte Map laden möchte benötigt man eine .yaml und .pgm Datei. Diese müssen im gleicher Ordner liegen.
 
