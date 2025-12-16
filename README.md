@@ -32,7 +32,7 @@ ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false
 
 ### Fahrzeug über Tastatur steuern
 ```bash
-ros2 run IArduino arduino_keyboard_control.py
+ros2 run IArduino arduino_keyboard_control
 ```
 
 ### cmdToAck
