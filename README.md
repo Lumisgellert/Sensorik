@@ -1,5 +1,10 @@
 # Sensorik Auto Commands
 ## Nodes starten
+### Alles starten
+```bash
+ros2 launch bringup_launcher start_all.launch.py
+```
+
 ### LIDAR starten
 ```bash
 ros2 launch sllidar_ros2 sllidar_a1_launch.py
